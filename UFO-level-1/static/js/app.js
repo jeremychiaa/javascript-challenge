@@ -22,6 +22,15 @@ var form = d3.select(".form-control");
 button.on("click", runFilter);
 form.on("submit",runFilter);
 
+// Run filter when enter key is pressed
+var input = document.getElementById("datetime");
+input.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("filter-btn").click();
+    }
+});
+
 // Define event handler function
 function runFilter() {
 
