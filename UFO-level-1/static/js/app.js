@@ -34,13 +34,12 @@ function runFilter() {
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
 
-    // console.log(inputValue);
-    // console.log(tableData);
+    console.log(inputValue);
 
     // Filter data to match user input
     var filteredData = tableData.filter(row => row.datetime === inputValue);
 
-    // console.log(filteredData);
+    console.log(filteredData);
 
     // Selecting the table element
     var tbody = d3.select("tbody");
