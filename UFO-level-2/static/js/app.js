@@ -28,26 +28,26 @@ function runFilter() {
     // Prevent page from refreshing
     d3.event.preventDefault();
 
-    // Create empty array to store values of filters
-    var filters = [];
+    // Select the input element and get the raw HTML node also get the value property of the input element
+    var inputDateElement = d3.select("#datetime");
+    var inputDateValue = inputDateElement.property("value");
 
-    // Variable to hold filter IDs
-    var filter_ids = ["datetime", "city", "state", "country", "shape"];
+    var inputCityElement = d3.select("#city");
+    var inputCityValue = inputCityElement.property("value");
 
-    // Store current value of each field in an array
-    for (var i = 0; i < 5; i++) {
-        var inputElement = d3.select(`#${filter_ids[i]}`);
-        filters.push(inputElement.property("value"));
-    };
+    var inputStateElement = d3.select("#state");
+    var inputStateValue = inputStateElement.property("value");
 
-    console.log(filters);
+    var inputCountryElement = d3.select("#country");
+    var inputCountryValue = inputCountryElement.property("value");
 
-    // Filter data to match all user inputs
-    for (var i = 0; i < 5; i++) {
-        if (filters[i] !== "") {
-            filteredData = tableData.filter(row => row[filter_ids[i]] === filters[i]);
-        };
-    };
+    var inputShapeElement = d3.select("#shape");
+    var inputShapeValue = inputShapeElement.property("value");
+
+    // Filter data to match user input
+    var filteredData = tableData.filter(row => row.datetime === inputDateValue &
+        row.city === inputCityValue & row.state === inputStateValue & row.country === inputCountryValue &
+        row.shape === inputShapeValue);
 
     console.log(filteredData);
 
